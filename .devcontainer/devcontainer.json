@@ -1,0 +1,23 @@
+{
+	"name": "C# (.NET)",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+
+	"portsAttributes": {
+		"5012": {
+			"label": "API",
+			"onAutoForward": "notify"
+		},
+		"3000": {
+			"label": "React",
+			"onAutoForward": "notify"
+		}
+	},
+	
+	"postCreateCommand": {
+		"backend": "cd backend && dotnet tool install --global dotnet-ef --version 8.0 && dotnet ef database update -p ABikeAPI/",
+		"frontend": "cd frontend && npm install"
+	}
+}
