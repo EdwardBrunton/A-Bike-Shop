@@ -19,20 +19,37 @@ public class OrdersController : ControllerBase
         _context = context;
     }
 
+    /// <summary>
+    /// Retrieve all orders in the database.
+    /// </summary>
+    /// <response code="200">Success</response>
+    /// <response code="500">Internal Server Error</response>
     [HttpGet(Name = "GetOrders")]
-    public IEnumerable<Order> Get()
+    public IEnumerable<QueryOrder> Get()
     {
-        return _context.Orders.Where(o => !o.IsCompleted && !o.IsDeleted).ToList();
+        return _context.Orders.Where(o => !o.IsCompleted && !o.IsDeleted).ToList().Select(o => new QueryOrder(o));
     }
 
+    /// <summary>
+    /// Create a new Order.
+    /// </summary>
+    /// <response code="200">Success</response>
+    /// <response code="500">Internal Server Error</response>
     [HttpPost(Name = "CreateOrder")]
-    public IActionResult Create(Order order)
+    public IActionResult Create(ApiOrder order)
     {
-        _context.Orders.Add(order);
+        var newOrder = new DbOrder(order);
+        _context.Orders.Add(newOrder);
         _context.SaveChanges();
-        return Ok(order);
+        return Ok(newOrder);
     }
 
+    /// <summary>
+    /// Retrieve a specific order.
+    /// </summary>
+    /// <response code="200">Success</response>
+    /// <response code="404">Not found</response>
+    /// <response code="500">Internal Server Error</response>
     [HttpGet("{id}", Name = "GetOrder")]
     public IActionResult Get(Guid id)
     {
@@ -41,6 +58,6 @@ public class OrdersController : ControllerBase
         {
             return NotFound();
         }
-        return Ok(order);
+        return Ok(new QueryOrder(order));
     }
 }
