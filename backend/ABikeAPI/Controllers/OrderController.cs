@@ -31,7 +31,7 @@ public class OrdersController : ControllerBase
     }
 
     /// <summary>
-    /// Create a new Order.
+    /// Create a new order.
     /// </summary>
     /// <response code="200">Success</response>
     /// <response code="500">Internal Server Error</response>
