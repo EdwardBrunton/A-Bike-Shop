@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 public class OrderContext : DbContext
 {
     public string DbPath { get; }
-    public DbSet<Order> Orders { get; set; }
+    public DbSet<DbOrder> Orders { get; set; }
 
     public OrderContext()
     {
