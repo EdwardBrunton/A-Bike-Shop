@@ -32,8 +32,8 @@ Your task is to create a frontend interface for an existing backend system, prio
 - Include a form for staff to create new bike service orders with the following fields:
   - **Service Type**
     - Wheel adjustment
-      - Chain replacement
-      - Brake maintenance
+    - Chain replacement
+    - Brake maintenance
   - **Customer Name**
   - **Phone Number**
   - **Email Address**
