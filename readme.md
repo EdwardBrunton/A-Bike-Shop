@@ -73,5 +73,9 @@ npm run dev
 ```cmd
 cd backend/ABikeApi
 
-dotnet run
+dotnet watch
 ```
+
+### How to read the API documentation
+
+- Open a browser and navigate to `http://127.0.0.1:5012/swagger/index.html`
