@@ -54,6 +54,8 @@ Your task is to create a frontend interface for an existing backend system, prio
 
 - Ensure there is a functionality to view all completed orders, separate from open orders.
 
+**Hint: Start in the file called order-table.tsx**
+
 # How to run the project:
 
 ## Dev container
